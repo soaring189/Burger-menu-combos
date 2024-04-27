@@ -31,6 +31,6 @@ while choice != "Exit" and choice is not None:
                 if outer_index == len(combos) - 1 and inner_index == len(j) - 1:
                     menu += f"└{'─' * max_name_length}┴{'─' * max_item_length}┴{'─' * 4}┘\n"
                 if inner_index != len(j) - 1:
-                    menu += f"│{' ' * max_name_length * 2}├{'─' * max_item_length}┼{'─' * 4}│\n"
+                    menu += f"│{' ' * max_name_length * 2}├{'─' * max_item_length}┼{'─' * 4}┤\n"
                     menu += f"│{' ' * (max_name_length * 2)}│"
         easygui.msgbox(menu)
