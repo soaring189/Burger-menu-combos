@@ -11,8 +11,10 @@ while choice != "Exit" and choice is not None:
     if choice == "Find combo":
         combo_name = easygui.enterbox("Please enter the combo name you want to find")
         if combo_name is not None:
+            found = False
             for i, j in combos.items():
                 if i.upper() == combo_name.upper():
+                    found = True
                     search_result = [i]
                     for k in combos[i]:
                         search_result.append(f"{k}: ${'%.2f' % j[k]}")
@@ -44,9 +46,8 @@ while choice != "Exit" and choice is not None:
                             combos.pop(i)
                             combos[modified_name] = modified_combo
                     break
-                else:
-                    easygui.msgbox("This combo is not on the menu")
-                    break
+            if not found:
+                easygui.msgbox("This combo is not on the menu")
     elif choice == "Output all":
         max_name_length = max(len(i) for i in combos.keys())
         max_item_length = max(len(str(j)) for i in combos.values()

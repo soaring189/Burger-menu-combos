@@ -9,18 +9,19 @@ while choice != "Exit" and choice is not None:
                                choices=["Find combo", "Output all", "Exit"],
                                title="MENU MAKER OPTIONS")
     if choice == "Find combo":
+        found = False
         combo_name = easygui.enterbox("Please enter the combo name you want to find")
         for i, j in combos.items():
             if i.upper() == combo_name.upper():
+                found = True
                 search_result = [i]
                 for k in combos[i]:
                     search_result.append(f"{k}: ${'%.2f' % j[k]}")
                 search_result = '\n'.join(search_result)
                 easygui.msgbox(search_result)
                 break
-            else:
-                easygui.msgbox("This combo is not on the menu")
-                break
+        if not found:
+            easygui.msgbox("This combo is not on the menu")
     elif choice == "Output all":
         max_name_length = max(len(i) for i in combos.keys())
         max_item_length = max(len(str(j)) for i in combos.values()
